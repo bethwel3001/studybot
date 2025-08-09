@@ -10,7 +10,9 @@ import Pricing from './pages/Pricing';
 import AICompanion from './pages/AICompanion';
 import Navbar from './components/common/Navbar';
 import { Toaster } from 'react-hot-toast';
-
+import LMS from './pages/LMS';
+import Enrolled from './pages/LMS/Enrolled';
+import Quizzes from './pages/LMS/Quizzes';
 function App() {
   const location = useLocation();
   return (
@@ -66,6 +68,9 @@ function App() {
             } />
             <Route path="/login" element={<Login />} />
             <Route path="/Signup" element={<Signup />} />
+            <Route path="/lms" element={<LMS />} />
+            <Route path="/lms/enrolled" element={<Enrolled />} />
+            <Route path="/lms/quizzes" element={<Quizzes />} />
           </Routes>
         </AnimatePresence>
       </main>
