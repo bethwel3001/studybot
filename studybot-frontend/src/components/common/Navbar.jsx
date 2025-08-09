@@ -8,12 +8,13 @@ import {
   SparklesIcon,
 } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from './logo.jpg';
 
 const navLinks = [
-  { name: 'Home', path: '/'},
-  { name: 'AI Companion', path: '/ai-companion'},
-  { name: 'Homework', path: '/homework'},
-  { name: 'Pricing', path: '/pricing'},
+  { name: 'Home', path: '/' },
+  { name: 'AI Companion', path: '/ai-companion' },
+  { name: 'Homework', path: '/homework' },
+  { name: 'Pricing', path: '/pricing' },
 ];
 
 const Navbar = () => {
@@ -39,11 +40,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="backdrop-blur bg-white/60 dark:bg-gray-900/60 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm">
+    <nav className="backdrop-blur-md bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-emerald-500">
-          StudyBot
+        <Link to="/" className="flex items-center gap-3 group">
+          <img
+            src={logo}
+            alt="StudyBot Logo"
+            className="h-12 w-12 rounded-full object-cover ring-2 ring-indigo-500 shadow-lg transition-transform duration-200 group-hover:scale-110"
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -52,32 +58,31 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`flex items-center gap-2 px-3 py-2 rounded-md text-base transition-all duration-150 font-medium ${
+              className={`px-4 py-2 rounded-md text-base transition-all duration-200 font-medium shadow-sm hover:shadow-md ${
                 location.pathname === link.path
                   ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-gray-800'
                   : 'text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
             >
-              {link.icon}
               {link.name}
             </Link>
           ))}
 
+          {/* Dark Mode Button */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 shadow-inner"
           >
             {darkMode ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
           </button>
 
+          {/* CTA */}
           <Link
             to="/ai-companion"
-            className="bg-gradient-to-r from-indigo-600 to-emerald-500 text-white px-4 py-2 rounded-md shadow-md hover:shadow-lg transition-all text-sm"
+            className="bg-gradient-to-r from-indigo-600 to-emerald-500 text-white px-5 py-2 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-transform text-sm flex items-center gap-2"
           >
-            <div className="flex items-center gap-1">
-              <SparklesIcon className="h-4 w-4" />
-              Get Started
-            </div>
+            <SparklesIcon className="h-4 w-4" />
+            Chat
           </Link>
         </div>
 
@@ -85,13 +90,13 @@ const Navbar = () => {
         <div className="md:hidden flex items-center gap-2">
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300"
           >
             {darkMode ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300"
+            className="p-2 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300"
           >
             {isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
           </button>
@@ -105,16 +110,16 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden px-4 pb-4"
+            className="md:hidden px-4 pb-4 space-y-2"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block w-full py-2 rounded-md text-center text-sm font-medium transition-all ${
+                className={`block w-full py-2 rounded-md text-center font-medium shadow-sm transition-all duration-150 ${
                   location.pathname === link.path
                     ? 'bg-indigo-100 dark:bg-gray-800 text-indigo-600 dark:text-indigo-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-indigo-400'
                 }`}
               >
                 {link.name}
@@ -122,7 +127,7 @@ const Navbar = () => {
             ))}
             <Link
               to="/ai-companion"
-              className="block w-full py-2 mt-2 bg-gradient-to-r from-indigo-600 to-emerald-500 text-white rounded-md text-sm text-center"
+              className="block w-full py-2 mt-2 bg-gradient-to-r from-indigo-600 to-emerald-500 text-white rounded-full text-sm text-center shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform"
             >
               Get Started
             </Link>
