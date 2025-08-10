@@ -12,7 +12,6 @@ import logo from './logo.jpg';
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'AI Companion', path: '/ai-companion' },
   { name: 'Homework', path: '/homework' },
   { name: 'Pricing', path: '/pricing' },
 ];
@@ -129,7 +128,7 @@ const Navbar = () => {
               to="/ai-companion"
               className="block w-full py-2 mt-2 bg-gradient-to-r from-indigo-600 to-emerald-500 text-white rounded-full text-sm text-center shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform"
             >
-              Get Started
+              Chat
             </Link>
           </motion.div>
         )}
